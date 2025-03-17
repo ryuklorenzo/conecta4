@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const scenes = document.querySelectorAll(".scene");
     const buttons = {
         siguienteIntro: document.getElementById("siguienteIntro"),
+        anteriorEleccion: document.getElementById("anteriorEleccion"),
+        siguienteEleccion: document.getElementById("siguienteEleccion"),
         siguienteJuego: document.getElementById("siguienteJuego"),
         anteriorJuego: document.getElementById("anteriorJuego"),
         anteriorFin: document.getElementById("anteriorFin"),
@@ -9,7 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     buttons.siguienteIntro.addEventListener("click", () => {
-        changeScene("intro", "juego");
+        changeScene("intro", "eleccion");
+    });
+
+    buttons.siguienteEleccion.addEventListener("click", () => {
+        changeScene("eleccion", "juego");
     });
 
     buttons.siguienteJuego.addEventListener("click", () => {
@@ -17,7 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     buttons.anteriorJuego.addEventListener("click", () => {
-        changeScene("juego", "intro");
+        changeScene("juego", "eleccion");
+    });
+
+    buttons.anteriorEleccion.addEventListener("click", () => {
+        changeScene("eleccion", "intro");
     });
 
     buttons.anteriorFin.addEventListener("click", () => {

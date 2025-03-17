@@ -1,16 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>conecta4</title>
+    <title>Conecta 4</title>
     <link rel="stylesheet" href="css/css.css">
-    <script src="js/configuracion.js"></script>
-    <script src="js/fin.js"></script>
-    <script src="js/intro.js"></script>
-    <script src="js/juego.js"></script>
+    <script src="js/configuracion.js" type="module"></script>
+    <script src="js/fin.js" type="module"></script>
+    <script src="js/intro.js" type="module"></script>
+    <script src="js/juego.js" type="module"></script>
+    <script src="js/scene.js" type="module"></script>
+    <script src="js/script.js" type="module"></script>
 </head>
+
 <body>
-    
+    <div id="app">
+        <div id="intro" class="scene activo">
+            <h1>Intro</h1>
+            <button id="siguienteIntro">Siguiente</button>
+        </div>
+        <div id="juego" class="scene desactivado">
+            <h1>Conecta 4</h1>
+            <div id="tablero"></div>
+            <button id="anteriorJuego">Anterior</button>
+            <button id="siguienteJuego">Siguiente</button>
+        </div>
+        <div id="fin" class="scene desactivado">
+            <h1>Fin</h1>
+            <p id="mensaje"></p>
+            <button id="anteriorFin">Anterior</button>
+            <button id="reiniciar">Reiniciar</button>
+        </div>
+    </div>
 </body>
+
 </html>

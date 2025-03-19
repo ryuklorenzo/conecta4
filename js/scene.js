@@ -1,4 +1,4 @@
-export class Scene {
+class Scene {
     _container = null  //elemento HTML sobre el que se construye la escena
     _next = null  //escena siguiente
     constructor(container, next) {

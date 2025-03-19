@@ -1,83 +1,97 @@
-import { Scene } from "./scene.js";
-import { Intro } from "./intro.js";
-import { End } from "./fin.js";
-
-export class Juego {
-    #scenes = [];  // Lista de escenas
-    #actual = 0;   // Índice de la escena actual
-    #dataplayer1 = null;
-    #dataplayer2 = null;
+class Juego {
+    #escenas = []
+    #actual = 0
+    #contenedor = null
 
     constructor(queryCSS) {
-        this.container = document.querySelector(queryCSS);
-
-        if (!this.container) {
-            console.error("No se encontró el contenedor del juego.");
-            return;
+        // Selecciona el contenedor principal usando el selector CSS
+        this.#contenedor = document.querySelector(queryCSS);
+        // Recorre todos los elementos con la clase "scene" dentro del contenedor
+        for (const child of this.#contenedor.querySelectorAll(".scene")) {
+            // Añade cada escena al array de escenas
+            let escena = { _Container: child }; // Almacena el contenedor de la escena
+            this.#escenas.push(escena); // Añade la escena al array
         }
+        // Actualiza las escenas visibles
+        this.#actualizar();
 
-        // Crear las escenas y asociarlas con sus respectivos contenedores
-        for (const child of this.container.querySelectorAll(".scene")) {
-            const id = child.getAttribute("id");
-            let scene = null;
-            
-            switch (id) {
-                case "scene-intro":
-                    scene = new Intro(child, this.next); // Primera escena
-                    break;
-                case "scene-end":
-                    scene = new End(child, this.next); // Última escena
-                    break;
-            }
-
-            // Si la escena no es nula, agregarla a la lista de escenas
-            if (scene != null) {
-                this.#scenes.push(scene);
-            }
+        // Añade eventos a los botones dentro de cada escena
+        var boton = document.getElementById("Siguiente");
+        if (boton) {
+            boton.addEventListener("click", () => this.siguiente());
         }
-
-        this.#update(); // Inicializa la escena visible
+        boton = document.getElementById("Atras");
+        if (boton) {
+            boton.addEventListener("click", () => this.anterior());
+        }
+        boton = document.getElementById("Reiniciar");
+        if (boton) {
+            boton.addEventListener("click", () => this.reiniciar());
+        }
     }
 
-    /**
-     * Actualiza el estado de las escenas (activa la escena actual y desactiva las demás)
-     */
-    #update = () => {
-        this.#scenes.forEach((scene, index) => {
-            scene._container.classList.remove("activo");
-            scene._container.classList.add("desactivado");
-            scene.stop();
 
+    #actualizar = () => {
+        // Actualiza las escenas visibles
+        this.#escenas.forEach((element, index) => {
+            element._Container.classList.remove("active");
             if (index === this.#actual) {
-                scene._container.classList.add("activo");
-                scene._container.classList.remove("desactivado");
-                scene.start();
+                element._Container.classList.add("active");
             }
         });
+
+        // Muestra u oculta los botones según la escena activa
+        let botonSiguiente = document.getElementById("Sigiente");
+        let botonAtras = document.getElementById("Atras");
+        let botonReiniciar = document.getElementById("Reiniciar");
+
+        if (this.#actual === this.#escenas.length - 1) {
+            // Si es la última escena ("Fin"), solo muestra el botón "Reiniciar"
+            if (botonSiguiente) botonSiguiente.style.display = "none";
+            if (botonAtras) botonAtras.style.display = "none";
+            if (botonReiniciar) botonReiniciar.style.display = "inline-block";
+        } else {
+            // En otras escenas, muestra u oculta los botones según la lógica normal
+            if (botonSiguiente) {
+                botonSiguiente.style.display = this.#actual < this.#escenas.length - 1 ? "inline-block" : "none";
+            }
+            if (botonAtras) {
+                botonAtras.style.display = this.#actual > 0 ? "inline-block" : "none";
+            }
+            if (botonReiniciar) {
+                botonReiniciar.style.display = "none";
+            }
+        }
+    };
+
+    siguiente() {
+        // Si no es la última escena, avanza a la siguiente
+        if (this.#actual < this.#escenas.length - 1) {
+            this.#actual++;
+        }
+        // Actualiza las escenas visibles
+        this.#actualizar();
     }
 
     /**
-     * Cambia a la siguiente escena
+     * Método para retroceder a la escena anterior
      */
-    next = () => {
-        // Avanza a la siguiente escena, si estamos en la última, volvemos al inicio
-        if (this.#actual < this.#scenes.length - 1) {
-            this.#actual++;
-        } else {
-            this.#actual = 0; // Regresamos a la primera escena
+    anterior() {
+        // Si no es la primera escena, retrocede a la anterior
+        if (this.#actual > 0) {
+            this.#actual--;
         }
-
-        this.#update();
-    };
+        // Actualiza las escenas visibles
+        this.#actualizar();
+    }
 
     /**
-     * Cambia a la escena anterior
+     * Método para reiniciar el juego
      */
-    previus = () => {
-        this.#actual > 0 ? this.#actual-- : 0;
-        this.#update();
-    };
+    reiniciar() {
+        // Vuelve a la primera escena
+        this.#actual = 0;
+        // Actualiza las escenas visibles
+        this.#actualizar();
+    }
 }
-
-
-

@@ -6,33 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego 4</title>
     <link rel="stylesheet" href="css/css.css">
-    <script src="js/scene.js" type="module"></script>
-    <script src="js/configuracion.js" type="module"></script>
-    <script src="js/fin.js" type="module"></script>
-    <script src="js/intro.js" type="module"></script>
-    <script src="js/juego.js" type="module"></script>
+    <script src="js/scene.js"></script>
+    <script src="js/intro.js"></script>
+    <script src="js/juego.js"></script>
+    <script src="js/configuracion.js"></script>
+    <script src="js/fin.js"></script>
     <script>
-        var game = null;
+        var juego = null;
         //inicio del juego, se ejecuta al terminar la carga de la página ( <body onload="iniciar()...)
         function iniciar() {
-            game = new Game(".dam-game");
+            juego = new Juego(".dam-game");
         }
     </script>
 </head>
 
-<body>
-    <div id="portada">
-        <div id="scene-intro" class="scene activo">
-            <h1>Inicio</h1>
-            <button id="boton_scene1_toscene2">Siguiente</button>
-        </div>
-        <div id="scene-end" class="scene desactivado">
-            <h1>Final</h1>
-            <p>Gracias por jugar</p>
-            <button id="boton_scene4_toscene1">Volver al inicio</button>
-        </div>
-    </div>
+<body onload="iniciar()">
+    <main class="dam-game">
+        <div id="intro" class="scene activo">
+            <h1>Intro</h1>
 
+        </div>
+
+        <div id="eleccion" class="scene desactivado">
+            <h1>Elegir Personajes</h1>
+        </div>
+
+        <div id="partida" class="scene desactivado">
+            <h1>Conecta 4</h1>
+        </div>
+
+        <div id="fin" class="scene desactivado">
+            <h1>Fin</h1>
+        </div>
+        <div class="botones">
+            <button id="Siguiente">Siguiente</button>
+            <button id="Atras">Atras</button>
+            <button id="Reiniciar">Reiniciar</button>
+        </div>
+    </main>
 </body>
 
 </html>

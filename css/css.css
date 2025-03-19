@@ -4,17 +4,30 @@ body {
     background-color: #282c34;
     color: white;
 }
-.activo {
-    visibility: visible;
-    display: block;
-    opacity: 1; /* Asegura que sea completamente visible /
-    transition: opacity 0.3s ease; / Transición suave al aparecer */
-}
-.desactivado {
+
+.scene {
+    width: max(var(--width),700px);
+    height: var(--heigth);
     visibility: hidden;
     display: none;
-    opacity: 0; /* Asegura que sea completamente invisible /
-    transition: opacity 0.3s ease; / Transición suave al desaparecer */
+   
+}
+.active {
+    visibility: visible;
+    display: block;
+}
+
+.dam-game {
+    width: max(var( --width ),700px);
+    height: var(--heigth);
+    min-width: 700px;
+    min-height: 600px;
+   /* box-sizing: border-box;*/
+    border: 1px solid black;
+    margin: 0 auto;
+    font-size: 1.5em; /* Texto grande */
+
+
 }
 
 button {

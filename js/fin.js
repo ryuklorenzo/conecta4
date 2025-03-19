@@ -1,0 +1,3 @@
+class Fin extends Scene{
+    
+}

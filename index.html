@@ -6,39 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego 4</title>
     <link rel="stylesheet" href="css/css.css">
-    <script src="js/configuracion.js" type="module"></script>
-    <script src="js/fin.js" type="module"></script>
-    <script src="js/intro.js" type="module"></script>
-    <script src="js/juego.js" type="module"></script>
-    <script src="js/scene.js" type="module"></script>
-    <script src="js/script.js" type="module"></script>
+    <script src="js/scene.js"></script>
+    <script src="js/intro.js"></script>
+    <script src="js/juego.js"></script>
+    <script src="js/configuracion.js"></script>
+    <script src="js/fin.js"></script>
+    <script>
+        var juego = null;
+        //inicio del juego, se ejecuta al terminar la carga de la página ( <body onload="iniciar()...)
+        function iniciar() {
+            juego = new Juego(".dam-game");
+        }
+    </script>
 </head>
 
-<body>
-    <div id="app">
+<body onload="iniciar()">
+    <main class="dam-game">
         <div id="intro" class="scene activo">
             <h1>Intro</h1>
-            <button id="siguienteIntro">Siguiente</button>
+
         </div>
+
         <div id="eleccion" class="scene desactivado">
             <h1>Elegir Personajes</h1>
-            <div id="tablero"></div>
-            <button id="anteriorEleccion">Anterior</button>
-            <button id="siguienteEleccion">Siguiente</button>
         </div>
-        <div id="juego" class="scene desactivado">
+
+        <div id="partida" class="scene desactivado">
             <h1>Conecta 4</h1>
-            <div id="tablero"></div>
-            <button id="anteriorJuego">Anterior</button>
-            <button id="siguienteJuego">Siguiente</button>
         </div>
+
         <div id="fin" class="scene desactivado">
             <h1>Fin</h1>
-            <p id="mensaje"></p>
-            <button id="anteriorFin">Anterior</button>
-            <button id="reiniciar">Reiniciar</button>
         </div>
-    </div>
+        <div class="botones">
+            <button id="Siguiente">Siguiente</button>
+            <button id="Atras">Atras</button>
+            <button id="Reiniciar">Reiniciar</button>
+        </div>
+    </main>
 </body>
 
 </html>

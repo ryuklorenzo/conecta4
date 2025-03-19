@@ -6,39 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego 4</title>
     <link rel="stylesheet" href="css/css.css">
+    <script src="js/scene.js" type="module"></script>
     <script src="js/configuracion.js" type="module"></script>
     <script src="js/fin.js" type="module"></script>
     <script src="js/intro.js" type="module"></script>
     <script src="js/juego.js" type="module"></script>
-    <script src="js/scene.js" type="module"></script>
-    <script src="js/script.js" type="module"></script>
+    <script>
+        var game = null;
+        //inicio del juego, se ejecuta al terminar la carga de la página ( <body onload="iniciar()...)
+        function iniciar() {
+            game = new Game(".dam-game");
+        }
+    </script>
 </head>
 
 <body>
-    <div id="app">
-        <div id="intro" class="scene activo">
-            <h1>Intro</h1>
-            <button id="siguienteIntro">Siguiente</button>
+    <div id="portada">
+        <div id="scene-intro" class="scene activo">
+            <h1>Inicio</h1>
+            <button id="boton_scene1_toscene2">Siguiente</button>
         </div>
-        <div id="eleccion" class="scene desactivado">
-            <h1>Elegir Personajes</h1>
-            <div id="tablero"></div>
-            <button id="anteriorEleccion">Anterior</button>
-            <button id="siguienteEleccion">Siguiente</button>
-        </div>
-        <div id="juego" class="scene desactivado">
-            <h1>Conecta 4</h1>
-            <div id="tablero"></div>
-            <button id="anteriorJuego">Anterior</button>
-            <button id="siguienteJuego">Siguiente</button>
-        </div>
-        <div id="fin" class="scene desactivado">
-            <h1>Fin</h1>
-            <p id="mensaje"></p>
-            <button id="anteriorFin">Anterior</button>
-            <button id="reiniciar">Reiniciar</button>
+        <div id="scene-end" class="scene desactivado">
+            <h1>Final</h1>
+            <p>Gracias por jugar</p>
+            <button id="boton_scene4_toscene1">Volver al inicio</button>
         </div>
     </div>
+
 </body>
 
 </html>

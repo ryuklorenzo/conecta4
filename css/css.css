@@ -4,10 +4,6 @@ body {
     background-color: #282c34;
     color: white;
 }
-
-.scene {
-    margin-top: 20px;
-}
 .activo {
     visibility: visible;
     display: block;

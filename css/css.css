@@ -54,3 +54,10 @@ button {
 
 .cell.red { background-color: red; }
 .cell.yellow { background-color: yellow; }
+
+#fin img {
+    width: 40%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}

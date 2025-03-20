@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego 4</title>
     <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/juego.css">
     <script src="js/scene.js"></script>
     <script src="js/intro.js"></script>
     <script src="js/juego.js"></script>
     <script src="js/configuracion.js"></script>
+    <script src="js/game.js"></script>
     <script src="js/fin.js"></script>
     <script>
         var juego = null;
@@ -79,7 +81,7 @@
                     </label>
                     <input type="text" name="fieldname1" id="fieldname1">
                 </div>
-                <div id="imageList1"></div>
+                <div id="imageList1" class="image-list"></div>
             </div>
 
             <div id="configplayer2">
@@ -89,7 +91,7 @@
                     </label>
                     <input type="text" name="fieldname2" id="fieldname2">
                 </div>
-                <div id="imageList2"></div>
+                <div id="imageList2" class="image-list"></div>
             </div>
 
             <div id="configfooter">
@@ -99,8 +101,10 @@
         </div>
 
 
-        <div id="partida" class="scene desactivado">
+        <div id="partida" class="scene">
             <h1>Conecta 4</h1>
+            <div class="board" id="board"></div>
+            <p id="message"></p>
         </div>
 
         <div id="fin" class="scene desactivado">

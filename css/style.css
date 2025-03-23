@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'Saiyan Sans';
+
+    font-weight: normal;
+    font-style: normal;
+
+    src: url("/fonts/WubbaLubbaDubDub.ttf") format('truetype');
+
+}
+:root {
+    --width: 90vw;
+    --heigth: 90vh;
+    /*se tiene 6 filas más parte superior e inferior*/
+    font-family: 'Saiyan Sans', sans-serif;
+    font-size: 50px;
+    color: #FFA500; /* Naranja brillante */
+    text-shadow: 4px 4px 0px #000, 6px 6px 5px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+}
+
+
+
+.dam-game {
+    width: max(var( --width ),700px);
+    height: var(--heigth);
+    min-width: 700px;
+    min-height: 600px;
+   /* box-sizing: border-box;*/
+    border: 1px solid black;
+    margin: 0 auto;
+    font-size: 1.5em; /* Texto grande */
+
+
+}
+.scene1toscene2:hover {
+    cursor: grab;
+}
+
+
+
+
+
+.scene {
+    width: max(var(--width),700px);
+    height: var(--heigth);
+    visibility: hidden;
+    display: none;
+   
+}
+.active {
+    visibility: visible;
+    display: block;
+}
+
+
+
+
+#end {
+    background-color: gray;
+}
+
+img + p {
+    display: block; /* Asegura que el texto aparezca debajo de la imagen */
+    font-size: 0.3em; /* Ajusta el tamaño según tus necesidades */
+    margin-top: 5px; /* Espacio entre la imagen y el texto */
+    text-align: center; /* Centra el texto debajo de la imagen */
+}

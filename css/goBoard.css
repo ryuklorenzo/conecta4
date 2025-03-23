@@ -1,0 +1,148 @@
+:root{
+    --rows: 22;
+    --columns: 22;
+    --lado-cuadrado-h: calc(var(--heigth) / var(--rows));
+    --lado-cuadrado-w: calc(var(--width) / var(--columns));
+    --radio-circulo-h: calc(var(--lado-cuadrado-h) );//- 3vh);
+    --radio-circulo-w: calc(var(--lado-cuadrado-w) ); //- 3vh);
+
+}
+#boardContainer{
+    height: 100%;
+    width: 100%;
+}
+#goBoard {
+    display: grid;
+    grid-template-columns: 2fr 5fr 2fr;
+    grid-template-rows: 0.75fr 10fr 0.75fr;
+    grid-template-areas:"header header header"
+                        "infoplayer1 board infoplayer2"
+                        "menu menu menu";
+
+}
+#boardheader{
+    grid-area: header;
+    text-align: center;
+
+    /*background-color: aqua;*/
+    background-image: url("/imgs/logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.imagenPlayer {
+    box-sizing: border-box;
+    padding: 1vw;
+
+}
+.imagenPlayer img{
+    object-fit: scale-down;
+
+    max-height: 150px;
+}
+#infoPlayer1, #infoPlayer2 {
+
+    width:100%;
+    height: 100%;
+    box-sizing: border-box;
+    /*border: 1px solid black;*/
+   /* background-color: orange;*/
+    text-align: center;
+    justify-content: center;
+}
+#infoPlayer2 {
+    grid-area: infoplayer2;
+}
+#infoPlayer1{
+    grid-area: infoplayer1;
+}
+
+#goBoardMenu{
+    grid-area: menu;
+    width: 100%;
+    display: flex
+;
+    flex-direction: row;
+    justify-content: space-around;
+
+
+}
+#board{
+    grid-area: board;
+    width: 100%;
+    height: 100%;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    height: var(--lado-cuadrado-h);
+    width: 100%;
+    box-sizing: border-box;
+    /*border:1px solid orange;*/
+}
+#resetBoard, #printBoard, #evalBoard{
+    font-size: 24px; /* Texto grande */
+    margin-top: 10px;
+    padding: 10px 30px; /* Más espacio dentro del botón */
+    border: none;
+    /*box-sizing: border-box;
+    margin: 1vh;*/
+    border-radius: 10px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+#resetBoard{
+    background-color: #007bff;
+}
+#printBoard{
+    background-color: #28a745;
+}
+#evalBoard{
+    background-color: #ffc107;
+}
+.cell {
+    /* para que sea cuadrado */
+    width: min(var(--lado-cuadrado-h), var(--lado-cuadrado-w));
+    box-sizing: border-box;
+  /*  background: blue;*/
+    border:1px solid black;
+}
+
+.circle {
+
+    height: 100%; /*min(var(--radio-circulo-h), var(--radio-circulo-w));*/
+    box-sizing: content-box;
+    border-radius: 50%;
+   /* margin: 0.5vh;*/
+
+}
+/*
+.circle_start {
+    position: relative;
+    top: calc(  var(--heigth));
+    left: -200px;
+    background-color: green;
+    transition: top 4s;
+}*/
+
+.circle_playerOne, .circle_playerTwo {
+    /* background-color: yellow;*/
+     background-size: cover;
+    border:1px solid gray;
+   /* background-color: white;
+    border-radius: 50%;*/
+}
+.circle_playerOne{
+    background-color:black;
+}
+.circle_playerTwo{
+    background-color: white;
+}
+.red{
+   /* border: 2px solid red;*/
+}
+
+

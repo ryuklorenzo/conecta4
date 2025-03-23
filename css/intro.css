@@ -2,13 +2,12 @@
 #introsvg {
     /*background-color: aqua;*/
     background-color: cornsilk;
-background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
     background-position: center;
 }
-text, .scene1toscene2 {
 
-}
 #gointro{
     color:red;
 }

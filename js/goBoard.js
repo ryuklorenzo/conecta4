@@ -8,8 +8,8 @@ class GoBoard extends Scene {
     _options = null
     #scoreplayer1 = null
     #scoreplayer2 = null
-    #rows = 19
-    #cols = 19
+    #rows = 6
+    #cols = 7
     #sound=null;
     //0 negras 1 blancas
     #turn = 0
@@ -20,11 +20,11 @@ class GoBoard extends Scene {
         this._options = {
             player1: {
                 name: "Player 1",
-                url: "./images/icons8-rick-sanchez-480.png",
+                url: "./images/musculman.jpg",
             },
             player2: {
                 name: "Player 2",
-                url: "./images/icons8-rick-sanchez-480.png",
+                url: "./images/musculman.jpg",
             }
         }
         this.#sound=container.querySelector(".song");
@@ -107,7 +107,6 @@ class GoBoard extends Scene {
         this.#scoreplayer1.innerHTML = score[0]
         this.#scoreplayer2.innerHTML = score[1]
     }
-    
     #evalCell(row, column, vecinos_color) {
         var atrapado = true
         let vecinos_nuevos = []
@@ -341,4 +340,3 @@ class GoBoard extends Scene {
         this.#createBoard()
     }
 }
-

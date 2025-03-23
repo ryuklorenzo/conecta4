@@ -107,6 +107,7 @@ class GoBoard extends Scene {
         this.#scoreplayer1.innerHTML = score[0]
         this.#scoreplayer2.innerHTML = score[1]
     }
+    
     #evalCell(row, column, vecinos_color) {
         var atrapado = true
         let vecinos_nuevos = []

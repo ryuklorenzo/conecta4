@@ -37,7 +37,6 @@ class Game {
                     })
                     break;
                 case "end":
-
                     scene = new End(child, this.next)
                     break;
             }
@@ -53,12 +52,6 @@ class Game {
      */
     #update = () => {
         this.#scenes.forEach((element, index) => {
-            if (index == 2 && index == this.#actual) {
-                element.setOptions({
-                    player1: this.#dataplayer1,
-                    player2: this.#dataplayer2
-                })
-            }
             element._container.classList.remove("active");
             if (index == this.#actual) {
                 element._container.classList.add("active");
@@ -67,8 +60,8 @@ class Game {
                 element.stop()
             }
         });
-
     }
+
     /**
      * funcionles lambda (almacenado en variable) que cambia la escena actual
      */
@@ -76,12 +69,12 @@ class Game {
         this.#actual > 0 ? this.#actual-- : 0;
         this.#update()
     };
+
     /**
      * funcionles lambda (almacenado en variable) que cambia la escena actual
      */
     next = () => {
         //en bucle
-
         if (this.#actual < (this.#scenes.length - 1))
             this.#actual++;
         else

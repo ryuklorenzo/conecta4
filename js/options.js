@@ -7,7 +7,7 @@ class Option extends Scene {
     #imageURL2 = null
     #imageList1 = null
     #imageList2 = null
-    #sound=null
+    #sound = null
 
     constructor(container, next) {
         super(container, next)
@@ -18,9 +18,9 @@ class Option extends Scene {
         this.#imageList1 = container.querySelector("#imageList1")
         this.#imageList2 = container.querySelector("#imageList2")
         this.#buttonNext = container.querySelector("#buttonAceptarConfiguracion")
-        this.#sound=container.querySelector(".song");
-        this.#buttonNext.addEventListener("click",()=>{
-            var options={
+        this.#sound = container.querySelector(".song");
+        this.#buttonNext.addEventListener("click", () => {
+            var options = {
                 player1: {
                     name: this.#fieldName1.value,
                     url: this.#imageURL1.src,
@@ -116,18 +116,19 @@ class Option extends Scene {
             this.#buttonNext.disabled = true
     }
 
-    start(){
-        if(this.#sound!=null){
+    start() {
+        if (this.#sound != null) {
             this.#sound.play();
         }
     }
 
-    stop(){
-        if(this.#sound!=null){
+    stop() {
+        if (this.#sound != null) {
             this.#sound.pause();
+            this.#sound.currentTime = 0; // Reiniciar la canción
         }
     }
 
-    restart(){
+    restart() {
     }
 }

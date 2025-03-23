@@ -10,10 +10,8 @@ class Intro extends Scene {
         var portada = container.querySelector("#portada");
         var boton_scene1_toscene2 = container.querySelector("#boton_scene1_toscene2");
         boton_scene1_toscene2.addEventListener("click", () => {
+            this.stop(); // Detener la canción de la escena de introducción
             this._next();
-            if (this.#sound != null) {
-                this.#sound.play();
-            }
         });
         //inicio del sonido
         this.#sound = container.querySelector(".song");
@@ -22,7 +20,9 @@ class Intro extends Scene {
      * Implementación método abstrcato
      */
     start() {
-        // No reproducir el sonido automáticamente
+        if (this.#sound != null) {
+            this.#sound.play();
+        }
     }
     /**
      * Implementación método abstrcato
@@ -30,6 +30,7 @@ class Intro extends Scene {
     stop() {
         if (this.#sound != null) {
             this.#sound.pause();
+            this.#sound.currentTime = 0; // Reiniciar la canción
         }
     }
     /**

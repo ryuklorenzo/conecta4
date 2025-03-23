@@ -1,16 +1,17 @@
 const CellColor = {
-    BLACK: 'back',
+    BLACK: 'black',
     WHITE: 'white',
 }
 
 class GoBoard extends Scene {
-    constructor() {
+    constructor(container, next) {
+        super(container, next); // Asegúrate de llamar a super()
         this.rows = 6;
         this.cols = 7;
         this.board = Array.from({ length: this.rows }, () => Array(this.cols).fill(null));
         this.currentPlayer = 'red';
         this.gameOver = false;
-        this.boardDiv = document.getElementById("board");
+        this.boardDiv = container.querySelector("#board");
         this.createBoard();
     }
 
@@ -77,8 +78,20 @@ class GoBoard extends Scene {
         }
         return false;
     }
+    start() {
+        document.getElementById("message").textContent = "Jugador Rojo comienza!";
+    }
+    stop() {
+    }
+    restart() {
+        this.board = Array.from({ length: this.rows }, () => Array(this.cols).fill(null));
+        this.currentPlayer = 'red';
+        this.gameOver = false;
+        this.updateBoard();
+        document.getElementById("message").textContent = "Jugador Rojo comienza!";
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    new Game();
+    new Game(".dam-game");
 });

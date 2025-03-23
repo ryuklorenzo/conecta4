@@ -1,23 +1,13 @@
-
 #config {
-
     height: 100%;
     width: 100%;
-   /* background-image: url("/imgs/torneo.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    background-blend-mode: darken;*/
-
 }
 
-#config  > div{
-    display:grid;
+#config > div {
+    display: grid;
     grid-template-areas: "configheader configheader"
                           "configplayer1 configplayer2"
                           "configfooter configfooter";
-
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 0.5fr 10fr 1fr;
     border: 2px solid black;
@@ -25,101 +15,86 @@
     height: 100%;
     width: 100%;
 }
-#configheader{
+
+#configheader {
     grid-area: configheader;
     text-align: center;
-
-    /*background-color: aqua;*/
     background-image: url("/imgs/logo.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-
 }
-#configplayer1{
-    grid-area: configplayer1;
-    /* background-color: yellow;*/
-    box-sizing: border-box;
-    /*margin:2vw;*/
-    padding: 1vh;
 
-}
-#configplayer2{
-    grid-area: configplayer2;
-    /* background-color: blue;*/
+#configplayer1, #configplayer2 {
     box-sizing: border-box;
-    /* margin:2vw;*/
     padding: 1vh;
 }
-#configfooter{
+
+#configfooter {
     grid-area: configfooter;
-    /* background-color: red;*/
     display: flex;
     justify-content: center;
     align-items: center;
-    /*height: 100%;*/
-    gap:max(2vh,20px) max(2vh,20px);
-    /* margin: 1vw;*/
-
-
+    gap: max(2vh, 20px) max(2vh, 20px);
 }
-#imageList1, #imageList2{
-    display:flex;
+
+#imageList1, #imageList2 {
+    display: flex;
     margin: 1vh auto;
-    flex-wrap:wrap;
-    width:100%;
-
-
-
-    justify-content:center;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
 }
-#imageList1{
 
-}
-#imageList1 img, #imageList2 img{
-
-    width:23%;
-
-    height:15vh;
-    box-sizing: border-box;
-    object-fit: contain;
+#imageList1 div, #imageList2 div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4px;
+    border: 1px solid gray;
+    padding: 10px;
     background-color: white;
-    margin:4px;
-    border:1px solid gray;
-
 }
-#imageList1 img:hover, #imageList2 img:hover{
 
+#imageList1 img, #imageList2 img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+#imageList1 p, #imageList2 p {
+    margin: 0;
+    text-align: center;
+}
+
+#imageList1 img:hover, #imageList2 img:hover {
     border: 2px solid black;
-
 }
-#buttonResetConfiguracion{
+
+#buttonResetConfiguracion {
     background-color: orange;
 }
-#buttonAceptarConfiguracion{
-    background-color:#007bff;
-}
-#buttonAceptarConfiguracion, #buttonResetConfiguracion{
-    font-size: 24px; /* Texto grande */
-    padding: 20px 40px; /* Más espacio dentro del botón */
-    border: none;
-    /*box-sizing: border-box;
-    margin: 1vh;*/
-    border-radius: 10px;
 
+#buttonAceptarConfiguracion {
+    background-color: #007bff;
+}
+
+#buttonAceptarConfiguracion, #buttonResetConfiguracion {
+    font-size: 24px;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 10px;
     color: white;
     cursor: pointer;
     transition: background 0.3s;
 }
-#buttonAceptarConfiguracion:disabled{
+
+#buttonAceptarConfiguracion:disabled {
     background-color: gray;
 }
-/*#buttonAceptarConfiguracion:hover{
-  background-color: #0056b3;
-}*/
-.confignombre{
+
+.confignombre {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*gap: 1vh;*/
 }

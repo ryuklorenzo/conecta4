@@ -1,13 +1,13 @@
 class GoBoard extends Scene {
     #board = null;
     _options = null;
-    #rows = 6;
-    #cols = 7;
+    #rows = 6; // Filas
+    #cols = 7; // Columnas
     #turn = 0;
 
     constructor(container, next) {
         super(container, next);
-
+        // Configuración de opciones
         this._options = {
             player1: { name: "Player 1" },
             player2: { name: "Player 2" },
@@ -39,24 +39,24 @@ class GoBoard extends Scene {
         console.log("Método stop ejecutado en GoBoard.");
         // Aquí puedes agregar lógica adicional si es necesario
     }
-
+    // Crear celda
     #createNode(row, col) {
         const cell = document.createElement("div");
         cell.classList.add("cell");
         cell.dataset.row = row;
         cell.dataset.col = col;
-
+        // Agregar evento click a la celda
         cell.addEventListener("click", () => {
             this.#handleCellClick(row, col);
         });
 
         return cell;
     }
-
+    // Crear tablero
     #createBoard() {
         const boardElement = document.getElementById("board");
         boardElement.innerHTML = ""; // Limpiar el tablero
-
+        // Crear celdas
         for (let i = 0; i < this.#rows; i++) {
             for (let j = 0; j < this.#cols; j++) {
                 const cell = this.#createNode(i, j);
@@ -65,31 +65,30 @@ class GoBoard extends Scene {
             }
         }
     }
-
+    // Clics en las celdas
     #handleCellClick(row, col) {
         for (let i = this.#rows - 1; i >= 0; i--) {
             if (!this.#board[i][col]) {
+                // Asignar celdas
                 this.#board[i][col] = this.#turn === 0 ? "circle_playerOne" : "circle_playerTwo";
                 this.#updateBoard();
-
+                // Verificar si hay un ganador
                 if (this.#checkWinner(i, col)) {
                     const winner = this.#turn === 0 ? this._options.player1.name : this._options.player2.name;
-                    alert(`${winner} gana!`);
-
-                    // Mostrar el botón "Siguiente"
+                    alert(`${winner} oleeee has ganado!`);
                     const nextButton = document.getElementById("nextButton");
                     nextButton.style.display = "block";
                     return;
                 }
-
+                // Cambiar de turno
                 this.#turn = 1 - this.#turn;
                 return;
             }
         }
 
-        alert("¡Columna llena!");
+        alert("¡La columna esta llena bestia ponlo en otro sitio!");
     }
-
+    // Actualizar tablero visualmente
     #updateBoard() {
         const cells = document.querySelectorAll(".cell");
         cells.forEach(cell => {
@@ -102,7 +101,7 @@ class GoBoard extends Scene {
             }
         });
     }
-
+    //Verificar ganador
     #checkWinner(row, col) {
         const color = this.#turn === 0 ? "circle_playerOne" : "circle_playerTwo";
 
@@ -113,14 +112,14 @@ class GoBoard extends Scene {
             this.#checkDirection(row, col, 1, -1, color)   // Diagonal /
         );
     }
-
+    // Verificar direccion específica
     #checkDirection(row, col, rowDir, colDir, color) {
         let count = 0;
-
+        // Verificar en ambas direcciones
         for (let i = -3; i <= 3; i++) {
             const newRow = row + i * rowDir;
             const newCol = col + i * colDir;
-
+            // Verificar si la celda está dentro del tablero y tiene el color correcto
             if (
                 newRow >= 0 &&
                 newRow < this.#rows &&
@@ -137,10 +136,10 @@ class GoBoard extends Scene {
 
         return false;
     }
-
+    // Reiniciar tablero
     #reset() {
         this.#turn = 0;
-
+        // Limpiar el tablero
         for (let i = 0; i < this.#rows; i++) {
             for (let j = 0; j < this.#cols; j++) {
                 this.#board[i][j] = null;
@@ -153,7 +152,7 @@ class GoBoard extends Scene {
         const nextButton = document.getElementById("nextButton");
         nextButton.style.display = "none";
     }
-
+    // Ir a la siguiente pantalla
     #goToNextScreen() {
         // Ocultar el tablero
         const boardContainer = document.getElementById("boardContainer");
@@ -161,7 +160,7 @@ class GoBoard extends Scene {
     
         // Mostrar la pantalla final
         const endScreen = document.getElementById("end");
-        endScreen.style.display = "flex"; // Cambiar a "flex" para que sea visible
+        endScreen.style.display = "flex"; 
     
         // Actualizar el mensaje de la pantalla final
         const endMessage = document.getElementById("endMessage");

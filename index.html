@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El maravilloso juego de conectar 4 fichas seguidas</title>
+    <!--se incluyen las diferentes clases css-->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/intro.css">
     <link rel="stylesheet" href="css/options.css">
@@ -18,7 +19,7 @@
     <script src="js/game.js"></script>
     <script>
         var game = null;
-        //inicio del juego, se ejecuta al terminar la carga de la página ( <body onload="iniciar()...>)
+        //inicio del juego, se ejecuta al terminar la carga de la página
         function iniciar() {
             game = new Game(".dam-game");
         }
@@ -26,9 +27,8 @@
 </head>
 
 <body onload="iniciar()">
-    <!--contenedor principal-->
     <main class="dam-game">
-
+        <!--intro-->
         <div class="scene active" id="intro">
             <audio class="song">
                 <source src="./sounds/intro.mp3" type="audio/mpeg">
@@ -43,13 +43,12 @@
             </svg>
             <button id="boton_scene1_toscene2">PRESIONAME</button>
         </div>
-
+        <!--configuracion, APIs y to eso-->
         <div class="scene" id="config">
             <audio class="song">
                 <source src="./sounds/options.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
-            <!--contenedor para que el display no afecte-->
             <div>
                 <div id="configheader"></div>
                 <div id="configplayer1">
@@ -76,7 +75,7 @@
                 </div>
             </div>
         </div>
-
+        <!--juego-->
         <div class="scene" id="boardContainer">
             <div id="goBoard">
                 <div id="boardheader">
@@ -86,16 +85,12 @@
                     </audio>
                 </div>
                 <div id="board"></div>
-
-                <!-- Información del Jugador 1 -->
                 <div id="infoPlayer1">
                     <div class="nombrePlayer" id="player1Name">Jugador 1</div>
                     <div class="imagenPlayer">
                         <img id="player1Image" src="./imgs/musculman.jpg" alt="Jugador 1" />
                     </div>
                 </div>
-
-                <!-- Información del Jugador 2 -->
                 <div id="infoPlayer2">
                     <div class="nombrePlayer" id="player2Name">Jugador 2</div>
                     <div class="imagenPlayer">
@@ -109,7 +104,7 @@
             </div>
             <button id="nextButton" style="display: none;">Siguiente</button>
         </div>
-
+        <!--fin del juego-->
         <div class="scene" id="end" style="display: none;">
             <audio class="song">
                 <source src="./sounds/intro.mp3" type="audio/mpeg">
@@ -117,7 +112,6 @@
             </audio>
             <div style="text-align: center; color: white;">
                 <h1 id="endMessage">¡Gracias por jugar! Presiona Reset para volver a empezar.</h1>
-                <!-- Botón para volver al inicio -->
                 <button id="boton_scene4_toscene1">Volver al inicio</button>
             </div>
         </div>

@@ -10,10 +10,9 @@
 :root {
     --width: 90vw;
     --heigth: 90vh;
-    /*se tiene 6 filas más parte superior e inferior*/
     font-family: 'Saiyan Sans', sans-serif;
     font-size: 50px;
-    color: #FFA500; /* Naranja brillante */
+    color: #FFA500;
     text-shadow: 4px 4px 0px #000, 6px 6px 5px rgba(0, 0, 0, 0.5);
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -26,7 +25,7 @@
     min-height: 600px;
     border: 1px solid black;
     margin: 0 auto;
-    font-size: 1.5em; /* Texto grande */
+    font-size: 1.5em;
 }
 
 .scene1toscene2:hover {
@@ -46,15 +45,15 @@
 }
 
 img + p {
-    display: block; /* Asegura que el texto aparezca debajo de la imagen */
-    font-size: 0.3em; /* Ajusta el tamaño según tus necesidades */
-    margin-top: 5px; /* Espacio entre la imagen y el texto */
-    text-align: center; /* Centra el texto debajo de la imagen */
+    display: block;
+    font-size: 0.3em;
+    margin-top: 5px; 
+    text-align: center; 
 }
 
 .board {
     display: grid;
-    grid-template-columns: repeat(7, 60px); /* Aumentado tamaño de las celdas */
+    grid-template-columns: repeat(7, 60px);
     gap: 5px;
     background: blue;
     padding: 15px;

@@ -1,19 +1,18 @@
 :root {
-    --rows: 6; /* Ajustado para 6 filas */
-    --columns: 7; /* Ajustado para 7 columnas */
+    --rows: 6; /* Ajustar al numero razon de muchos errores */
+    --columns: 7; /* Ajustar al numero razon de muchos errores */
     --lado-cuadrado-h: calc(var(--heigth) / var(--rows));
     --lado-cuadrado-w: calc(var(--width) / var(--columns));
     --radio-circulo-h: calc(var(--lado-cuadrado-h));
     --radio-circulo-w: calc(var(--lado-cuadrado-w));
 }
 
-/* Contenedor principal del tablero */
 #boardContainer {
     height: 100%;
     width: 100%;
 }
 
-/* Diseño del tablero */
+
 #goBoard {
     display: grid;
     grid-template-columns: 2fr 5fr 2fr;
@@ -24,7 +23,7 @@
         "menu menu menu";
 }
 
-/* Encabezado del tablero */
+
 #boardheader {
     grid-area: header;
     text-align: center;
@@ -34,7 +33,6 @@
     background-position: center;
 }
 
-/* Estilos para las imágenes de los jugadores */
 .imagenPlayer {
     box-sizing: border-box;
     padding: 1vw;
@@ -47,7 +45,6 @@
     border: 2px solid #333;
 }
 
-/* Información de los jugadores */
 #infoPlayer1, #infoPlayer2 {
     width: 100%;
     height: 100%;
@@ -58,7 +55,7 @@
     flex-direction: column;
     align-items: center;
     font-family: 'Saiyan Sans', sans-serif;
-    color: #FFA500; /* Naranja brillante */
+    color: #FFA500; 
     text-shadow: 2px 2px 0px #000;
 }
 
@@ -70,7 +67,6 @@
     grid-area: infoplayer1;
 }
 
-/* Menú del tablero */
 #goBoardMenu {
     grid-area: menu;
     width: 100%;
@@ -79,13 +75,12 @@
     justify-content: space-around;
 }
 
-/* Diseño del tablero */
 #board {
     grid-area: board;
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* 7 columnas */
     grid-template-rows: repeat(6, 1fr); /* 6 filas */
-    gap: 5px; /* Espaciado entre celdas */
+    gap: 5px; 
     background: pink;
     padding: 15px;
     border-radius: 10px;
@@ -93,7 +88,6 @@
     height: 100%;
 }
 
-/* Fila del tablero */
 .row {
     display: flex;
     justify-content: center;
@@ -102,9 +96,8 @@
     box-sizing: border-box;
 }
 
-/* Celdas del tablero */
 .cell {
-    width: 100%; /* Ajusta el tamaño de las celdas automáticamente */
+    width: 100%; 
     height: 100%;
     background: white;
     border-radius: 50%;
@@ -117,10 +110,9 @@
 }
 
 .cell:hover {
-    transform: scale(1.1); /* Efecto de hover */
+    transform: scale(1.1); 
 }
 
-/* Fichas */
 .circle {
     height: 100%;
     width: 100%;
@@ -130,14 +122,13 @@
 }
 
 .circle_playerOne {
-    background-color: black; /* Ficha del jugador 1 */
+    background-color: black; 
 }
 
 .circle_playerTwo {
-    background-color: green; /* Ficha del jugador 2 */
+    background-color: green; 
 }
 
-/* Botones */
 #resetBoard, #printBoard, #evalBoard {
     font-size: 24px;
     margin-top: 10px;
@@ -161,20 +152,19 @@
     background-color: #ffc107;
 }
 
-/* Pantalla final */
 #end {
-    display: none; /* Oculto por defecto */
+    display: none; 
     justify-content: center;
     align-items: center;
-    background-color: #000; /* Fondo negro */
-    color: white; /* Texto blanco */
-    width: 100vw; /* Ancho completo de la ventana */
-    height: 100vh; /* Alto completo de la ventana */
-    position: absolute; /* Posición absoluta para cubrir toda la pantalla */
+    background-color: #000; 
+    color: white; 
+    width: 100vw; 
+    height: 100vh; 
+    position: absolute;
     top: 0;
     left: 0;
-    z-index: 10; /* Asegura que esté encima de otros elementos */
-    flex-direction: column; /* Asegura que los elementos estén en columna */
+    z-index: 10; 
+    flex-direction: column; 
 }
 
 #endMessage {

@@ -157,11 +157,12 @@ class GoBoard extends Scene {
         // Ocultar el tablero
         const boardContainer = document.getElementById("boardContainer");
         boardContainer.style.display = "none";
-    
+
         // Mostrar la pantalla final
         const endScreen = document.getElementById("end");
-        endScreen.style.display = "flex"; 
-    
+        endScreen.style.display = "flex";
+        endScreen.classList.add("active");
+
         // Actualizar el mensaje de la pantalla final
         const endMessage = document.getElementById("endMessage");
         if (endMessage) {
@@ -169,3 +170,16 @@ class GoBoard extends Scene {
         }
     }
 }
+
+// Configurar el botón "Volver al inicio"
+document.getElementById("boton_scene4_toscene1").addEventListener("click", () => {
+    // Ocultar la pantalla final
+    const endScreen = document.getElementById("end");
+    endScreen.style.display = "none";
+    endScreen.classList.remove("active");
+
+    // Mostrar la pantalla de inicio
+    const introScreen = document.getElementById("intro");
+    introScreen.style.display = "flex";
+    introScreen.classList.add("active");
+});

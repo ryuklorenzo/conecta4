@@ -1,41 +1,43 @@
 class GoBoard extends Scene {
     #board = null;
     _options = null;
-    #scoreplayer1 = null;
-    #scoreplayer2 = null;
-    #rows = 6; // Número de filas
-    #cols = 7; // Número de columnas
-    #sound = null;
-    #turn = 0; // 0: Jugador 1, 1: Jugador 2
+    #rows = 6;
+    #cols = 7;
+    #turn = 0;
 
     constructor(container, next) {
         super(container, next);
 
         this._options = {
-            player1: {
-                name: "Player 1",
-                url: "./images/musculman.jpg",
-            },
-            player2: {
-                name: "Player 2",
-                url: "./images/musculman.jpg",
-            },
+            player1: { name: "Player 1" },
+            player2: { name: "Player 2" },
         };
 
-        this.#sound = container.querySelector(".song");
         this.#board = Array.from({ length: this.#rows }, () => Array(this.#cols).fill(null));
 
-        // Configurar botones
+        // Configurar botón Reset
         this._container.querySelector("#resetBoard").addEventListener("click", () => {
             this.#reset();
         });
 
-        this._container.querySelector("#printBoard").addEventListener("click", () => {
-            this.#print();
+        // Configurar botón Siguiente
+        const nextButton = document.getElementById("nextButton");
+        nextButton.addEventListener("click", () => {
+            this.#goToNextScreen();
         });
 
-        this.#scoreplayer1 = this._container.querySelector("#infoPlayer1 .scorePlayer");
-        this.#scoreplayer2 = this._container.querySelector("#infoPlayer2 .scorePlayer");
+        // Crear el tablero al iniciar
+        this.#createBoard();
+    }
+
+    start() {
+        console.log("Método start ejecutado en GoBoard.");
+        this.#reset(); // Reinicia el tablero al iniciar
+    }
+
+    stop() {
+        console.log("Método stop ejecutado en GoBoard.");
+        // Aquí puedes agregar lógica adicional si es necesario
     }
 
     #createNode(row, col) {
@@ -54,30 +56,33 @@ class GoBoard extends Scene {
     #createBoard() {
         const boardElement = document.getElementById("board");
         boardElement.innerHTML = ""; // Limpiar el tablero
-    
+
         for (let i = 0; i < this.#rows; i++) {
             for (let j = 0; j < this.#cols; j++) {
                 const cell = this.#createNode(i, j);
                 this.#board[i][j] = null; // Inicializar la celda como vacía
-                boardElement.appendChild(cell); // Agregar la celda directamente al tablero
+                boardElement.appendChild(cell); // Agregar la celda al tablero
             }
         }
     }
 
     #handleCellClick(row, col) {
-        // Buscar la primera fila disponible en la columna
         for (let i = this.#rows - 1; i >= 0; i--) {
             if (!this.#board[i][col]) {
                 this.#board[i][col] = this.#turn === 0 ? "circle_playerOne" : "circle_playerTwo";
                 this.#updateBoard();
 
                 if (this.#checkWinner(i, col)) {
-                    alert(`${this.#turn === 0 ? this._options.player1.name : this._options.player2.name} gana!`);
-                    this.#reset();
+                    const winner = this.#turn === 0 ? this._options.player1.name : this._options.player2.name;
+                    alert(`${winner} gana!`);
+
+                    // Mostrar el botón "Siguiente"
+                    const nextButton = document.getElementById("nextButton");
+                    nextButton.style.display = "block";
                     return;
                 }
 
-                this.#turn = 1 - this.#turn; // Cambiar turno
+                this.#turn = 1 - this.#turn;
                 return;
             }
         }
@@ -93,8 +98,7 @@ class GoBoard extends Scene {
             cell.className = "cell"; // Resetear clases
 
             if (this.#board[row][col]) {
-                cell.classList.add(this.#board[row][col]);
-                cell.style.backgroundImage = `url('${this.#board[row][col] === "circle_playerOne" ? this._options.player1.url : this._options.player2.url}')`;
+                cell.classList.add(this.#board[row][col]); // Agregar clase para el jugador
             }
         });
     }
@@ -144,37 +148,25 @@ class GoBoard extends Scene {
         }
 
         this.#createBoard();
+
+        // Ocultar el botón "Siguiente" al reiniciar
+        const nextButton = document.getElementById("nextButton");
+        nextButton.style.display = "none";
     }
 
-    #print() {
-        console.log("Estado del tablero:");
-        console.log("   " + Array.from({ length: this.#cols }, (_, i) => ` C${i} `).join("")); // Encabezado de columnas
-        for (let i = 0; i < this.#rows; i++) {
-            const row = this.#board[i]
-                .map(cell => {
-                    if (!cell) return " . "; // Celda vacía
-                    if (cell === "circle_playerOne") return " R "; // Ficha del jugador 1 (rojo)
-                    if (cell === "circle_playerTwo") return " Y "; // Ficha del jugador 2 (amarillo)
-                })
-                .join("");
-            console.log(`F${i} ${row}`); // Imprime la fila con su índice
+    #goToNextScreen() {
+        // Ocultar el tablero
+        const boardContainer = document.getElementById("boardContainer");
+        boardContainer.style.display = "none";
+    
+        // Mostrar la pantalla final
+        const endScreen = document.getElementById("end");
+        endScreen.style.display = "flex"; // Cambiar a "flex" para que sea visible
+    
+        // Actualizar el mensaje de la pantalla final
+        const endMessage = document.getElementById("endMessage");
+        if (endMessage) {
+            endMessage.textContent = "¡Gracias por jugar! Presiona Reset para volver a empezar.";
         }
-    }
-
-    start() {
-        this.#reset();
-        if (this.#sound) {
-            this.#sound.play();
-        }
-    }
-
-    stop() {
-        if (this.#sound) {
-            this.#sound.pause();
-        }
-    }
-
-    restart() {
-        this.#reset();
     }
 }

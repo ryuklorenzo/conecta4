@@ -1,6 +1,6 @@
 :root {
-    --rows: 6; /* Ajustado para 6 filas */
-    --columns: 7; /* Ajustado para 7 columnas */
+    --rows: 6; /* Ajustar al numero razon de muchos errores */
+    --columns: 7; /* Ajustar al numero razon de muchos errores */
     --lado-cuadrado-h: calc(var(--heigth) / var(--rows));
     --lado-cuadrado-w: calc(var(--width) / var(--columns));
     --radio-circulo-h: calc(var(--lado-cuadrado-h));
@@ -12,6 +12,7 @@
     width: 100%;
 }
 
+
 #goBoard {
     display: grid;
     grid-template-columns: 2fr 5fr 2fr;
@@ -21,6 +22,7 @@
         "infoplayer1 board infoplayer2"
         "menu menu menu";
 }
+
 
 #boardheader {
     grid-area: header;
@@ -52,6 +54,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Saiyan Sans', sans-serif;
+    color: #FFA500; 
+    text-shadow: 2px 2px 0px #000;
 }
 
 #infoPlayer2 {
@@ -75,8 +80,8 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* 7 columnas */
     grid-template-rows: repeat(6, 1fr); /* 6 filas */
-    gap: 5px; /* Espaciado entre celdas */
-    background: blue;
+    gap: 5px; 
+    background: pink;
     padding: 15px;
     border-radius: 10px;
     width: 100%;
@@ -92,7 +97,7 @@
 }
 
 .cell {
-    width: 100%; /* Ajusta el tamaño de las celdas automáticamente */
+    width: 100%; 
     height: 100%;
     background: white;
     border-radius: 50%;
@@ -105,7 +110,7 @@
 }
 
 .cell:hover {
-    transform: scale(1.1); /* Efecto de hover */
+    transform: scale(1.1); 
 }
 
 .circle {
@@ -117,11 +122,11 @@
 }
 
 .circle_playerOne {
-    background-color: red; /* Ficha del jugador 1 */
+    background-color: black; 
 }
 
 .circle_playerTwo {
-    background-color: yellow; /* Ficha del jugador 2 */
+    background-color: green; 
 }
 
 #resetBoard, #printBoard, #evalBoard {
@@ -145,4 +150,40 @@
 
 #evalBoard {
     background-color: #ffc107;
+}
+
+#end {
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    background-color: #000; 
+    color: white; 
+    width: 100vw; 
+    height: 100vh; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10; 
+    flex-direction: column; 
+}
+
+#endMessage {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#boton_scene4_toscene1 {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#boton_scene4_toscene1:hover {
+    background-color: #e64a19;
 }

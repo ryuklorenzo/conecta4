@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El maravilloso juego de conectar 4 fichas seguidas</title>
+    <!--se incluyen las diferentes clases css-->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/intro.css">
     <link rel="stylesheet" href="css/options.css">
@@ -18,7 +19,7 @@
     <script src="js/game.js"></script>
     <script>
         var game = null;
-        //inicio del juego, se ejecuta al terminar la carga de la página ( <body onload="iniciar()...)
+        //inicio del juego, se ejecuta al terminar la carga de la página
         function iniciar() {
             game = new Game(".dam-game");
         }
@@ -26,9 +27,8 @@
 </head>
 
 <body onload="iniciar()">
-    <!--contenedor principal-->
     <main class="dam-game">
-
+        <!--intro-->
         <div class="scene active" id="intro">
             <audio class="song">
                 <source src="./sounds/intro.mp3" type="audio/mpeg">
@@ -39,33 +39,24 @@
                 <text x="50%" y="100" font-size="90" fill="red" id="gointro" text-anchor="middle">
                     <tspan x="50%" dy="1.3em">El maravilloso juego de</tspan>
                     <tspan x="50%" dy="1.3em">conectar 4 fichas seguidas</tspan>
-                </text>                
-                <!-- Añadir la imagen aquí -->
-                <foreignObject x="44%" y="37%" width="300" height="300" >
-                    <img src="imgs/icons8-rick-sanchez-480.png" alt="Rick Sanchez" style="width: 100%; height: 100%;" />
-                </foreignObject>
+                </text>
             </svg>
             <button id="boton_scene1_toscene2">PRESIONAME</button>
         </div>
+        <!--configuracion, APIs y to eso-->
         <div class="scene" id="config">
             <audio class="song">
                 <source src="./sounds/options.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
-            <!--contenedor para que el display no afecte-->
             <div>
-                <div id="configheader">
-
-                </div>
+                <div id="configheader"></div>
                 <div id="configplayer1">
                     <div class="confignombre">
                         <label for="fieldname1">
-
                             <p>Nombre jugador 1</p>
                         </label>
                         <input type="text" name="fieldname1" id="fieldname1">
-
-
                     </div>
                     <div id="imageList1"></div>
                 </div>
@@ -75,9 +66,7 @@
                             <p>Nombre jugador 2</p>
                         </label>
                         <input type="text" name="fieldname2" id="fieldname2">
-
                     </div>
-
                     <div id="imageList2"></div>
                 </div>
                 <div id="configfooter">
@@ -86,7 +75,7 @@
                 </div>
             </div>
         </div>
-
+        <!--juego-->
         <div class="scene" id="boardContainer">
             <div id="goBoard">
                 <div id="boardheader">
@@ -96,121 +85,36 @@
                     </audio>
                 </div>
                 <div id="board"></div>
-
                 <div id="infoPlayer1">
-                    <div class="nombrePlayer">
-                        texto 1
-                    </div>
+                    <div class="nombrePlayer" id="player1Name">Jugador 1</div>
                     <div class="imagenPlayer">
-                    </div>
-                    <div class="scorePlayer">
-                        0
+                        <img id="player1Image" src="./imgs/musculman.jpg" alt="Jugador 1" />
                     </div>
                 </div>
-
                 <div id="infoPlayer2">
-                    <div class="nombrePlayer">
-                        texto 1
-                    </div>
+                    <div class="nombrePlayer" id="player2Name">Jugador 2</div>
                     <div class="imagenPlayer">
-                    </div>
-                    <div class="scorePlayer">
-                        0
-                    </div>
-
-                </div>
-                <div class="scene" id="boardContainer">
-                    <div id="goBoard">
-                        <div id="boardheader">
-                            <audio class="song">
-
-                                <source src="./sounds/game.mp3" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
-                        </div>
-                        <div id="board"></div>
-
-                        <div id="infoPlayer1">
-                            <div class="nombrePlayer">
-                                texto 1
-                            </div>
-                            <div class="imagenPlayer">
-                            </div>
-                            <div class="scorePlayer">
-                                0
-                            </div>
-                        </div>
-
-                        <div id="infoPlayer2">
-                            <div class="nombrePlayer">
-                                texto 1
-                            </div>
-                            <div class="imagenPlayer">
-                            </div>
-                            <div class="scorePlayer">
-                                0
-                            </div>
-
-                        </div>
-                        <div id="goBoardMenu">
-                            <button id="resetBoard">Reset</button>
-                            <button id="printBoard">Imprimir</button>
-                            <button id="evalBoard">Evaluar</button>
-                        </div>
-                    </div>
-                    </id>
-
-
-
-                    <div class="scene" id="end">
-                        <audio class="song">
-
-                            <source src="./sounds/intro.mp3" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                        <svg width="90vw" height="89vh" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
-                            id="end">
-                            <rect width="100%" height="100%" fill="#000000" />
-                            <text x="50%" y="100" font-size="50" font-weight="bold" fill="black"
-                                text-anchor="middle">yippie</text>
-                            <text x="50%" y="15%" font-size="10%" font-weight="bold" fill="black"
-                                text-anchor="middle">yippie</text>
-                            <g stroke="black" stroke-width="2">
-                                <line x1="30%" y1="40%" x2="70%" y2="40%" />
-                                <line x1="30%" y1="50%" x2="70%" y2="50%" />
-                                <line x1="40%" y1="30%" x2="40%" y2="70%" />
-                                <line x1="50%" y1="30%" x2="50%" y2="70%" />
-                                <line x1="60%" y1="30%" x2="60%" y2="70%" />
-                            </g>
-
-
-                            <circle cx="35%" cy="45%" r="5%" fill="black">
-                                <animate attributeName="r" from="0%" to="5%" dur="3s" begin="0.2s" fill="freeze"
-                                    repeatCount="indefinite" />
-                            </circle>
-
-                            <circle cx="45%" cy="55%" r="5%" fill="white" stroke="black" stroke-width="2">
-                                <animate attributeName="r" from="0%" to="5%" dur="3s" begin="2s" fill="freeze"
-                                    repeatCount="indefinite" />
-                            </circle>
-
-                            <circle cx="55%" cy="45%" r="5%" fill="black">
-                                <animate attributeName="r" from="0%" to="5%" dur="3s" begin="4s" fill="freeze"
-                                    repeatCount="indefinite" />
-                            </circle>
-
-                            <circle cx="65%" cy="55%" r="5%" fill="white" stroke="black" stroke-width="2">
-                                <animate attributeName="r" from="0%" to="5%" dur="3s" begin="6s" fill="freeze"
-                                    repeatCount="indefinite" />
-                            </circle>
-
-
-                            <text x="50%" y="650" id="boton_scene4_toscene1" class="scene1toscene2" font-size="20"
-                                text-anchor="middle">Fin del juego
-                            </text>
-                        </svg>
+                        <img id="player2Image" src="./imgs/musculman.jpg" alt="Jugador 2" />
                     </div>
                 </div>
+
+                <div id="goBoardMenu">
+                    <button id="resetBoard">Reset</button>
+                </div>
+            </div>
+            <button id="nextButton" style="display: none;">Siguiente</button>
+        </div>
+        <!--fin del juego-->
+        <div class="scene" id="end" style="display: none;">
+            <audio class="song">
+                <source src="./sounds/intro.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <div style="text-align: center; color: white;">
+                <h1 id="endMessage">¡Gracias por jugar! Presiona Reset para volver a empezar.</h1>
+                <button id="boton_scene4_toscene1">Volver al inicio</button>
+            </div>
+        </div>
     </main>
 </body>
 

@@ -1,10 +1,10 @@
 class Option extends Scene {
-    #fieldName1 = null
-    #fieldName2 = null
-    #buttonNext = null
+    #fieldName1 = null // Nombre del jugador 1
+    #fieldName2 = null // Nombre del jugador 2
+    #buttonNext = null 
     #buttonReset = null
-    #imageURL1 = null
-    #imageURL2 = null
+    #imageURL1 = null // Imagen del jugador 1
+    #imageURL2 = null // Imagen del jugador 2
     #imageList1 = null
     #imageList2 = null
     #sound = null
@@ -19,6 +19,7 @@ class Option extends Scene {
         this.#imageList2 = container.querySelector("#imageList2")
         this.#buttonNext = container.querySelector("#buttonAceptarConfiguracion")
         this.#sound = container.querySelector(".song");
+        // Config boton Aceptar
         this.#buttonNext.addEventListener("click", () => {
             var options = {
                 player1: {
@@ -32,12 +33,13 @@ class Option extends Scene {
             }
             this._next(options)
         });
+        
         this.#buttonNext.disabled = true;
         this.#buttonReset = container.querySelector("#buttonResetConfiguracion")
         this.#buttonReset.addEventListener("click", this.#reset)
         this.createList()
     }
-
+    // Crear lista de personajes
     createList() {
         fetch("https://rickandmortyapi.com/api/character?page=1")
             .then((response) => response.json())
@@ -74,7 +76,7 @@ class Option extends Scene {
             })
             .catch((error) => console.error("Error al obtener los personajes de Rick and Morty:", error));
     }
-
+    // Seleccionar imagen para jugador 1
     #selectImg1 = () => {
         if (this.#imageURL1 != null) {
             this.#imageURL1.style.border = ""
@@ -83,7 +85,7 @@ class Option extends Scene {
         this.#imageList1.querySelector("img:hover").style.border = "solid 2px red"
         this.#enableNext()
     }
-
+    // Seleccionar imagen para jugador 2
     #selectImg2 = () => {
         if (this.#imageURL2 != null) {
             this.#imageURL2.style.border = "";
@@ -92,7 +94,7 @@ class Option extends Scene {
         this.#imageList2.querySelector("img:hover").style.border = "solid 2px red"
         this.#enableNext()
     }
-
+    // Reiniciar configuración
     #reset = () => {
         this.#fieldName1.value = ""
         this.#fieldName2.value = ""
@@ -107,7 +109,7 @@ class Option extends Scene {
         this.#imageURL2 = null
         this.#enableNext()
     }
-
+    // Habilitar botón Aceptar
     #enableNext = () => {
         if (this.#fieldName1.value != "" && this.#fieldName2.value != "" &&
             this.#imageURL1 != null && this.#imageURL2 != null)
